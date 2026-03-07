@@ -1,59 +1,111 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>The Retro Blog</title>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nika Jorjoliani - frontend developer and designer based in Vancouver, BC.">
+  <title>Nika Jorjoliani - Frontend Developer</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
 
-  <body>
-    <header>
-      <h1>The Retro Blog</h1>
-      <p>Old school thoughts for the modern web.</p>
-      <nav>
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo">Nika Jorjoliani</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <hr />
+  <main>
 
-    <main>
-      <!-- Featured Posts -->
-      <section>
-        <h2>Featured Posts</h2>
+    <section class="hero">
+      <div class="container">
+        <span class="hero-label">Frontend Developer</span>
+        <h1 class="hero-title">Hi, I'm Nika Jorjoliani</h1>
+        <p class="hero-description">
+          I build clean, accessible, and well-structured websites. I care about
+          semantic markup, readable CSS, and experiences that work for everyone.
+        </p>
+        <div class="hero-actions">
+          <a href="projects.html" class="btn btn-primary">View my work</a>
+          <a href="contact.html" class="btn btn-outline">Get in touch</a>
+        </div>
+      </div>
+    </section>
 
-        <article>
-          <h3>The Magic Behind Every Webpage</h3>
-          <p>
-            Before CSS made things pretty and JavaScript made things move, there
-            was HTML — the humble skeleton that holds the web together. Every
-            link you click, every headline you read, every image you see started
-            as a tag in a plain text file.
-          </p>
-          <a href="post.html">Read More</a>
-        </article>
+    <div class="container">
 
-        <hr />
+      <section class="section">
+        <h2 class="section-heading">Featured Projects</h2>
+        <ul class="project-list">
 
-        <article>
-          <h3>Why Semantic HTML Is a Superpower</h3>
-          <p>
-            Wrapping your content in the right tags is not just about following
-            rules — it helps screen readers, search engines, and future-you
-            understand what each piece of content actually means. A
-            <code>&lt;nav&gt;</code> is not just a div; it is a declaration of
-            intent.
-          </p>
-          <a href="post.html">Read More</a>
-        </article>
+          <li>
+            <article class="project-card">
+              <h3>Weather Dashboard</h3>
+              <p>
+                A responsive dashboard that displays live weather data and a
+                five-day forecast using a public API.
+              </p>
+              <ul class="tag-list" aria-label="Technologies used">
+                <li><span class="tag">HTML</span></li>
+                <li><span class="tag">CSS</span></li>
+                <li><span class="tag">JavaScript</span></li>
+              </ul>
+              <a href="projects.html">View project details &rarr;</a>
+            </article>
+          </li>
+
+          <li>
+            <article class="project-card">
+              <h3>Recipe Collection</h3>
+              <p>
+                A searchable recipe site with clean structured data, keyboard
+                navigation, and a strong focus on readability.
+              </p>
+              <ul class="tag-list" aria-label="Technologies used">
+                <li><span class="tag">HTML</span></li>
+                <li><span class="tag">CSS</span></li>
+                <li><span class="tag">Python</span></li>
+              </ul>
+              <a href="projects.html">View project details &rarr;</a>
+            </article>
+          </li>
+
+          <li>
+            <article class="project-card">
+              <h3>Portfolio Template</h3>
+              <p>
+                An open-source portfolio starter built with vanilla HTML and
+                CSS, designed to be simple and easy to customize.
+              </p>
+              <ul class="tag-list" aria-label="Technologies used">
+                <li><span class="tag">HTML</span></li>
+                <li><span class="tag">CSS</span></li>
+              </ul>
+              <a href="projects.html">View project details &rarr;</a>
+            </article>
+          </li>
+
+        </ul>
+        <a href="projects.html" class="view-all">See all projects &rarr;</a>
       </section>
 
-    </main>
+    </div>
 
-    <hr />
+  </main>
 
-    <footer>
-      <p>&copy; 2026 The Retro Blog. All rights reserved.</p>
-    </footer>
-  </body>
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <time datetime="2026">2026</time> Nika Jorjoliani. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
 </html>
