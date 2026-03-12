@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecture 3 — CSS Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Lecture 3: CSS</h1>
+      <p class="subtitle">An interactive demo of every concept from the slides</p>
+    </header>
+
+    <main>
+
+      <!-- ================================================================
+           1. CSS SYNTAX
+           ================================================================ -->
+      <section class="section" id="syntax">
+        <h2>1. CSS Syntax</h2>
+        <div class="concept-box">
+          <pre class="code">selector {
+  property: value;
+}</pre>
+          <p>
+            A CSS rule consists of a <strong>selector</strong> and a
+            <strong>declaration block</strong>. Each declaration is a
+            <code>property: value</code> pair, ended with a semicolon.
+          </p>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           2. SELECTORS
+           ================================================================ -->
+      <section class="section" id="selectors">
+        <h2>2. Selectors</h2>
+
+        <!-- Wildcard -->
+        <div class="demo-card">
+          <h3>Wildcard <code>*</code></h3>
+          <p>Targets <em>every</em> element in the DOM.</p>
+          <div class="example-box">
+            <p>The rule <code>* { box-sizing: border-box; margin: 0; padding: 0; }</code> is applied to every single element on this page — including this paragraph.</p>
+          </div>
+        </div>
+
+        <!-- Element selector -->
+        <div class="demo-card">
+          <h3>Element Selector <code>p</code>, <code>span</code></h3>
+          <p>Targets all elements of a specific HTML tag.</p>
+          <div class="example-box elem-example">
+            <p>This &lt;p&gt; is styled by the <code>p</code> element selector — light blue background.</p>
+            <span>This &lt;span&gt; is styled by the <code>span</code> element selector — italic text.</span>
+          </div>
+        </div>
+
+        <!-- Class selector -->
+        <div class="demo-card">
+          <h3>Class Selector <code>.highlight</code></h3>
+          <p>Targets every element that has a given class. The same class can be applied to any HTML element.</p>
+          <div class="example-box">
+            <p class="highlight">This &lt;p&gt; has class="highlight" — styled.</p>
+            <p>This &lt;p&gt; has no class — not styled by the class selector.</p>
+            <div class="highlight">This &lt;div&gt; also has class="highlight" — styled too!</div>
+          </div>
+        </div>
+
+        <!-- ID selector -->
+        <div class="demo-card">
+          <h3>ID Selector <code>#special-para</code></h3>
+          <p>Targets exactly one element with a specific <code>id</code>. IDs must be unique per page.</p>
+          <div class="example-box">
+            <p id="special-para">This &lt;p&gt; has id="special-para" — styled by the ID selector.</p>
+            <p>This &lt;p&gt; has no ID — not styled.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           3. ADVANCED SELECTORS
+           ================================================================ -->
+      <section class="section" id="advanced">
+        <h2>3. Advanced Selectors</h2>
+
+        <!-- Descendant -->
+        <div class="demo-card">
+          <h3>Descendant Selector <code>.ancestor p</code></h3>
+          <p>Targets every <code>&lt;p&gt;</code> that is inside <code>.ancestor</code>, no matter how deeply nested.</p>
+          <div class="ancestor example-box">
+            <p>Direct child &lt;p&gt; — styled (teal border).</p>
+            <div>
+              <div>
+                <p>Deeply nested &lt;p&gt; — also styled (still a descendant).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Child selector -->
+        <div class="demo-card">
+          <h3>Child Selector <code>.direct-parent &gt; p</code></h3>
+          <p>Targets <em>only</em> the <code>&lt;p&gt;</code> elements that are a direct child of <code>.direct-parent</code>.</p>
+          <div class="direct-parent example-box">
+            <p>Direct child &lt;p&gt; — styled (orange background).</p>
+            <div>
+              <p>Nested &lt;p&gt; (not a direct child of .direct-parent) — NOT styled.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Adjacent sibling -->
+        <div class="demo-card">
+          <h3>Adjacent Sibling Selector <code>h4 + p</code></h3>
+          <p>Targets the <em>first</em> <code>&lt;p&gt;</code> that immediately follows an <code>&lt;h4&gt;</code>.</p>
+          <div class="adjacent-demo example-box">
+            <h4>Heading (h4)</h4>
+            <p>First &lt;p&gt; directly after h4 — styled (green background).</p>
+            <p>Second &lt;p&gt; — NOT styled by adjacent sibling selector.</p>
+            <p>Third &lt;p&gt; — NOT styled by adjacent sibling selector.</p>
+          </div>
+        </div>
+
+        <!-- General sibling -->
+        <div class="demo-card">
+          <h3>General Sibling Selector <code>h4 ~ p</code></h3>
+          <p>Targets <em>all</em> <code>&lt;p&gt;</code> siblings that come after an <code>&lt;h4&gt;</code>.</p>
+          <div class="general-sibling-demo example-box">
+            <h4>Heading (h4)</h4>
+            <p>First &lt;p&gt; after h4 — styled.</p>
+            <p>Second &lt;p&gt; — also styled!</p>
+            <p>Third &lt;p&gt; — also styled!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           4. PSEUDO-CLASSES & PSEUDO-ELEMENTS
+           ================================================================ -->
+      <section class="section" id="pseudo">
+        <h2>4. Pseudo-classes &amp; Pseudo-elements</h2>
+
+        <!-- User Action -->
+        <div class="demo-card">
+          <h3>User Action: <code>:hover</code>, <code>:active</code>, <code>:focus</code></h3>
+          <p>These pseudo-classes respond to user interaction. Try hovering, clicking, and tabbing through the elements below.</p>
+          <div class="action-demo example-box">
+            <button class="demo-btn">Hover over me</button>
+            <button class="demo-btn">Click &amp; hold (active)</button>
+            <input class="demo-input" type="text" placeholder="Tab/click to focus" />
+          </div>
+        </div>
+
+        <!-- Structural -->
+        <div class="demo-card">
+          <h3>Structural: <code>:first-child</code>, <code>:last-child</code>, <code>:not(:first-child)</code></h3>
+          <p>Target elements based on their position among siblings.</p>
+          <ul class="structural-list">
+            <li>Item 1 — <code>:first-child</code> → bold + blue background</li>
+            <li>Item 2 — <code>:not(:first-child)</code> → italic</li>
+            <li>Item 3 — <code>:not(:first-child)</code> → italic</li>
+            <li>Item 4 — <code>:last-child</code> + <code>:not(:first-child)</code> → underlined + italic + pink</li>
+          </ul>
+        </div>
+
+        <!-- Form States -->
+        <div class="demo-card">
+          <h3>Form States: <code>:checked</code>, <code>:disabled</code>, <code>:required</code>, <code>:invalid</code></h3>
+          <form class="states-form" onsubmit="return false">
+            <div class="form-row">
+              <input type="checkbox" id="cb-normal" />
+              <label for="cb-normal">Normal checkbox</label>
+            </div>
+            <div class="form-row">
+              <input type="checkbox" id="cb-checked" checked />
+              <label for="cb-checked">Checked checkbox — <code>:checked</code> makes label green</label>
+            </div>
+            <div class="form-row">
+              <input type="text" disabled value="I am disabled" />
+              <span class="form-note"><code>:disabled</code> — grayed out, not interactive</span>
+            </div>
+            <div class="form-row">
+              <input type="email" required placeholder="Required email field" />
+              <span class="form-note"><code>:required</code> — orange border</span>
+            </div>
+            <div class="form-row">
+              <input type="email" value="not-an-email" />
+              <span class="form-note"><code>:invalid</code> — red border (wrong format)</span>
+            </div>
+          </form>
+        </div>
+
+        <!-- Pseudo-elements -->
+        <div class="demo-card">
+          <h3>Pseudo-elements: <code>::before</code>, <code>::after</code>, <code>::placeholder</code></h3>
+          <p>Pseudo-elements insert generated content or style specific parts of an element.</p>
+          <div class="example-box">
+            <p class="before-after-demo">This paragraph gets content injected by <code>::before</code> and <code>::after</code>.</p>
+            <input class="placeholder-demo" type="text" placeholder="This placeholder is styled via ::placeholder" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           5. SPECIFICITY
+           ================================================================ -->
+      <section class="section" id="specificity">
+        <h2>5. Specificity</h2>
+        <p>
+          When multiple CSS rules target the same element and property,
+          <strong>specificity</strong> determines which rule wins. Higher score = wins.
+        </p>
+
+        <div class="specificity-chart">
+          <div class="spec-col">
+            <span class="spec-score">1000</span>
+            <span class="spec-label">Inline<br>style=""</span>
+          </div>
+          <div class="spec-col">
+            <span class="spec-score">100</span>
+            <span class="spec-label">ID<br>#id</span>
+          </div>
+          <div class="spec-col">
+            <span class="spec-score">10</span>
+            <span class="spec-label">Class<br>.class</span>
+          </div>
+          <div class="spec-col">
+            <span class="spec-score">1</span>
+            <span class="spec-label">Element<br>p, div…</span>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Specificity in action — same element, increasing winner</h3>
+          <p>
+            All four paragraphs below have every rule applied to them,
+            but the one with the highest specificity sets the final color.
+          </p>
+          <div class="spec-demo">
+            <p class="spec-para">
+              <code>p { color: gray }</code> — element selector wins (score: <strong>1</strong>)
+            </p>
+            <p class="spec-para spec-class">
+              <code>.spec-class { color: royalblue }</code> — class beats element (score: <strong>10</strong>)
+            </p>
+            <p class="spec-para spec-class" id="spec-id">
+              <code>#spec-id { color: crimson }</code> — ID beats class (score: <strong>100</strong>)
+            </p>
+            <p class="spec-para spec-class" id="spec-inline" style="color: darkorchid;">
+              <code>style="color: darkorchid"</code> — inline beats ID (score: <strong>1000</strong>)
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>CST &mdash; Lecture 3: CSS &mdash; Demo Page</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,484 @@
+/* =====================================================================
+   Lecture 3 — CSS Demo Stylesheet
+   Concepts demonstrated:
+     1. CSS Syntax
+     2. Selectors  (wildcard, element, class, ID)
+     3. Advanced Selectors  (descendant, child, adjacent sibling, general sibling)
+     4. Pseudo-classes & Pseudo-elements
+     5. Specificity
+   ===================================================================== */
+
+
+/* -----------------------------------------------------------------------
+   WILDCARD SELECTOR  *
+   Targets every element in the DOM.
+   Rule: Selector { property: value; }
+   ----------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* -----------------------------------------------------------------------
+   ELEMENT SELECTORS
+   Target elements by their HTML tag name.
+   ----------------------------------------------------------------------- */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f4f6f9;
+  color: #222;
+  line-height: 1.65;
+}
+
+header {
+  background-color: #1a1a2e;
+  color: #fff;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: #888;
+  font-size: 0.875rem;
+  border-top: 1px solid #ddd;
+  margin-top: 3rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #1a1a2e;
+  border-bottom: 3px solid #1a1a2e;
+  padding-bottom: 0.3rem;
+}
+
+h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+h4 {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+p {
+  margin-bottom: 0.6rem;
+}
+
+code {
+  background-color: #e8eaf0;
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.88em;
+  color: #c0392b;
+}
+
+pre.code {
+  background-color: #1a1a2e;
+  color: #a8ff78;
+  padding: 1.2rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+  font-family: monospace;
+}
+
+/* span element selector — demonstrated in Section 2 */
+.elem-example span {
+  display: inline-block;
+  background-color: #fff3cd;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-style: italic;
+  margin-top: 0.4rem;
+}
+
+/* p element selector inside elem-example — demonstrated in Section 2 */
+.elem-example p {
+  background-color: #d1ecf1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+}
+
+
+/* -----------------------------------------------------------------------
+   CLASS SELECTORS  .classname
+   Target elements that carry a specific class attribute.
+   ----------------------------------------------------------------------- */
+.subtitle {
+  font-size: 1.05rem;
+  color: #aac4e8;
+}
+
+.section {
+  margin-bottom: 3.5rem;
+}
+
+.concept-box {
+  background-color: #fff;
+  border: 1px solid #dde0e8;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.demo-card {
+  background-color: #fff;
+  border: 1px solid #e0e4ed;
+  border-left: 4px solid #1a1a2e;
+  border-radius: 6px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.example-box {
+  margin-top: 0.75rem;
+  padding: 1rem;
+  background-color: #f9f9fb;
+  border-radius: 4px;
+}
+
+/* .highlight class — shown in Section 2 (Class Selector) */
+.highlight {
+  background-color: #fff3cd;
+  border: 2px dashed #f0ad4e;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+
+/* -----------------------------------------------------------------------
+   ID SELECTOR  #id
+   Targets the single element with that specific id attribute.
+   ----------------------------------------------------------------------- */
+#special-para {
+  background-color: #d4edda;
+  border: 2px solid #28a745;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-weight: bold;
+  color: #155724;
+}
+
+
+/* -----------------------------------------------------------------------
+   DESCENDANT SELECTOR  ancestor descendant
+   Targets .ancestor p — every <p> inside .ancestor, at any depth.
+   ----------------------------------------------------------------------- */
+.ancestor p {
+  border-left: 4px solid #17a2b8;
+  padding: 0.5rem 0.75rem;
+  background-color: #d1ecf1;
+  border-radius: 4px;
+  margin-bottom: 0.4rem;
+}
+
+
+/* -----------------------------------------------------------------------
+   CHILD SELECTOR  parent > child
+   Targets .direct-parent > p — only <p> that are direct children.
+   ----------------------------------------------------------------------- */
+.direct-parent > p {
+  background-color: #ffe5b4;
+  border-left: 4px solid #fd7e14;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+
+/* -----------------------------------------------------------------------
+   ADJACENT SIBLING SELECTOR  prev + next
+   Targets .adjacent-demo h4 + p — the first <p> right after the <h4>.
+   ----------------------------------------------------------------------- */
+.adjacent-demo h4 + p {
+  background-color: #d4edda;
+  border-left: 4px solid #28a745;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+
+/* -----------------------------------------------------------------------
+   GENERAL SIBLING SELECTOR  prev ~ siblings
+   Targets .general-sibling-demo h4 ~ p — ALL <p> siblings after the <h4>.
+   ----------------------------------------------------------------------- */
+.general-sibling-demo h4 ~ p {
+  background-color: #e8d5f5;
+  border-left: 4px solid #8e44ad;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 0.4rem;
+}
+
+
+/* -----------------------------------------------------------------------
+   PSEUDO-CLASSES: USER ACTION
+   :hover   — mouse is over the element
+   :active  — element is being clicked/pressed
+   :focus   — element has keyboard/tab focus
+   ----------------------------------------------------------------------- */
+.action-demo {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.demo-btn {
+  padding: 0.6rem 1.2rem;
+  border: 2px solid #1a1a2e;
+  border-radius: 6px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.demo-btn:hover {
+  background-color: #1a1a2e;
+  color: #fff;
+}
+
+.demo-btn:active {
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+  color: #fff;
+}
+
+.demo-input {
+  padding: 0.5rem 0.75rem;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.demo-input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+}
+
+
+/* -----------------------------------------------------------------------
+   PSEUDO-CLASSES: STRUCTURAL
+   :first-child      — selects the first sibling
+   :last-child       — selects the last sibling
+   :not(:first-child)— selects every sibling except the first
+   ----------------------------------------------------------------------- */
+.structural-list {
+  list-style: none;
+  border: 1px solid #e0e4ed;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.structural-list li {
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid #eee;
+}
+
+.structural-list li:first-child {
+  font-weight: bold;
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+.structural-list li:last-child {
+  text-decoration: underline;
+  background-color: #f8d7da;
+  color: #721c24;
+  border-bottom: none;
+}
+
+.structural-list li:not(:first-child) {
+  font-style: italic;
+}
+
+
+/* -----------------------------------------------------------------------
+   PSEUDO-CLASSES: FORM STATES
+   :checked  — checkbox / radio that is selected
+   :disabled — input that cannot be interacted with
+   :required — input marked as required
+   :invalid  — input whose value fails validation
+   ----------------------------------------------------------------------- */
+.states-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.form-note {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* :checked — styles the label next to a checked checkbox */
+input[type="checkbox"]:checked + label {
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* :disabled — grays out the input */
+input:disabled {
+  background-color: #e9ecef;
+  color: #999;
+  cursor: not-allowed;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* :required — orange border to flag required fields */
+input:required {
+  border: 2px solid #fd7e14;
+  padding: 0.45rem 0.75rem;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* :invalid — red border when value doesn't pass validation */
+input:invalid {
+  border: 2px solid #dc3545;
+  background-color: #fff5f5;
+  padding: 0.45rem 0.75rem;
+  border-radius: 4px;
+  outline: none;
+}
+
+
+/* -----------------------------------------------------------------------
+   PSEUDO-ELEMENTS
+   ::before      — inserts generated content before the element's content
+   ::after       — inserts generated content after the element's content
+   ::placeholder — styles the placeholder text of an input
+   ----------------------------------------------------------------------- */
+.before-after-demo {
+  padding: 0.5rem 0.75rem;
+  background-color: #f0f0f0;
+  border: 1px dashed #bbb;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.before-after-demo::before {
+  content: "→ ";
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.before-after-demo::after {
+  content: " ←";
+  color: #3498db;
+  font-weight: bold;
+}
+
+.placeholder-demo {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.placeholder-demo::placeholder {
+  color: #e74c3c;
+  font-style: italic;
+  font-weight: 500;
+}
+
+
+/* -----------------------------------------------------------------------
+   SPECIFICITY DEMO
+   Score calculation:
+     Inline style   = 1000
+     ID selector    = 100
+     Class selector = 10
+     Element sel.   = 1
+   ----------------------------------------------------------------------- */
+.specificity-chart {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.spec-col {
+  flex: 1;
+  background-color: #1a1a2e;
+  color: #fff;
+  border-radius: 8px;
+  padding: 1.25rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spec-score {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #a8ff78;
+  margin-bottom: 0.4rem;
+}
+
+.spec-label {
+  font-size: 0.8rem;
+  color: #ccc;
+  line-height: 1.4;
+}
+
+/* Base rule — element selector, score: 1 */
+.spec-demo p {
+  padding: 0.55rem 0.85rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  border-left: 5px solid currentColor;
+  background-color: #fafafa;
+}
+
+/* score: 1  — element selector (lowest) */
+.spec-para {
+  color: #555;
+}
+
+/* score: 10 — class selector overrides element selector */
+.spec-class {
+  color: royalblue;
+}
+
+/* score: 100 — ID selector overrides class selector */
+#spec-id {
+  color: crimson;
+}
+
+/* score: 1000 — inline style (applied in HTML) overrides ID selector */
+/* style="color: darkorchid;" is written directly on the element */
