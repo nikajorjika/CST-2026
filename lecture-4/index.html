@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CSS Challenges</title>
+<style>
+
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f6f6f6;color:#111}
+
+.page{width:min(1100px,calc(100% - 32px));margin:40px auto}
+.section{background:white;border:1px solid #e7e7e7;border-radius:20px;padding:24px;margin-bottom:24px}
+.section h2{margin-top:0}
+.demo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{background:#fafafa;border:1px solid #e3e3e3;border-radius:16px;padding:18px}
+
+/* BOX MODEL */
+.box-margin{background:#ffd6d6;padding:30px;border-radius:14px}
+.box-padding{background:#ff9f9f;padding:24px;border-radius:12px}
+.box-border{border:6px solid #d60000;padding:22px;border-radius:10px;background:#fff1f1}
+.box-content{background:#6ec1ff;color:#002a4d;padding:20px;text-align:center;font-weight:bold;border-radius:8px}
+
+/* MARGIN CHALLENGE */
+.margin-stage{background:#f0f0f0;padding:20px;border-radius:14px}
+.margin-box{color:white;padding:14px 18px;border-radius:10px;width:140px}
+.margin-a{background:#111}
+.margin-b{background:#444;margin-top:25px;margin-left:40px}
+.margin-c{background:#777;width:160px;margin:30px auto 0;text-align:center}
+
+/* UNITS */
+.units-stage{background:#f3f3f3;padding:20px;border-radius:14px}
+.unit{color:white;padding:12px;border-radius:10px;text-align:center;margin-bottom:16px}
+.unit-px{width:120px;background:#111}
+.unit-rem{width:14rem;background:#2b2b2b;padding:1rem}
+.unit-em-wrapper{font-size:20px;background:#e7e7e7;padding:12px;border-radius:10px;margin-bottom:16px}
+.unit-em{width:10em;background:#4a4a4a;color:white;padding:0.8em;border-radius:10px;text-align:center}
+.unit-percent-wrapper{background:#dedede;padding:12px;border-radius:10px;margin-bottom:16px}
+.unit-percent{width:70%;background:#666}
+.unit-vw{width:30vw;background:#888}
+.unit-vh{height:18vh;min-height:90px;background:#b0b0b0;color:#111;font-weight:bold;display:flex;align-items:center;justify-content:center}
+
+/* DISPLAY */
+.display-stage{background:#f3f3f3;border-radius:12px;padding:14px}
+.tag{background:#111;color:white;border-radius:999px;margin:4px}
+
+.inline .tag{display:inline;padding:0 14px;line-height:40px}
+
+.block .tag{display:block;padding:12px;border-radius:10px;margin:6px 0}
+.block .tag:nth-child(1){background:#222}
+.block .tag:nth-child(2){background:#444}
+.block .tag:nth-child(3){background:#666}
+
+.inlineblock .tag{display:inline-block;width:120px;padding:12px 16px;border-radius:10px;text-align:center}
+.inlineblock .tag:nth-child(1){background:#111}
+.inlineblock .tag:nth-child(2){background:#444}
+.inlineblock .tag:nth-child(3){background:#777}
+.inlineblock .tag:nth-child(4){background:#999}
+
+
+/* FINAL CHALLENGE */
+.final-screen {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #efefef 0%, #e3e3e3 100%);
+  border-radius: 20px;
+  padding: 4vh 4vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.final-panel {
+  width: min(980px, 94%);
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 28px;
+  padding: 2rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.07);
+}
+.final-nav {
+  margin-bottom: 28px;
+}
+.final-logo {
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  padding: 0 16px;
+  line-height: 42px;
+  border-radius: 999px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.final-nav-link {
+  display: inline-block;
+  color: #333;
+  margin-right: 18px;
+  line-height: 42px;
+}
+.final-hero {
+  margin-bottom: 28px;
+}
+.final-kicker {
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  padding: 0 14px;
+  line-height: 34px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+.final-hero-box {
+  background: #ffe1e1;
+  padding: 28px;
+  border-radius: 22px;
+}
+.final-hero-inner {
+  border: 6px solid #d61f1f;
+  background: #ffb8b8;
+  padding: 22px;
+  border-radius: 16px;
+}
+.final-hero-content {
+  background: #79c8ff;
+  color: #083250;
+  border-radius: 12px;
+  padding: 22px;
+}
+.final-hero-content h3 {
+  margin: 0 0 10px;
+  font-size: 2rem;
+}
+.final-hero-content p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 34em;
+}
+.final-features {
+  margin-bottom: 28px;
+  font-size: 0;
+}
+.final-feature-card {
+  display: inline-block;
+  width: calc(50% - 10px);
+  vertical-align: top;
+  background: #f5f5f5;
+  border-radius: 18px;
+  padding: 20px;
+  font-size: 16px;
+}
+.final-feature-card + .final-feature-card {
+  margin-left: 20px;
+}
+.final-feature-title {
+  margin: 0 0 10px;
+  font-size: 1.25rem;
+}
+.final-feature-text {
+  margin: 0 0 16px;
+  color: #555;
+  line-height: 1.6;
+}
+.final-feature-chip {
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  padding: 0 12px;
+  line-height: 34px;
+  border-radius: 999px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+.final-stats {
+  background: #f0f0f0;
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 28px;
+}
+.final-stat-bar {
+  width: 70%;
+  background: #666;
+  color: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 14px;
+}
+.final-stat-row {
+  font-size: 0;
+}
+.final-stat-box {
+  display: inline-block;
+  vertical-align: top;
+  color: #fff;
+  border-radius: 12px;
+  text-align: center;
+  padding: 14px 16px;
+  font-size: 16px;
+}
+.final-stat-box-px {
+  width: 160px;
+  background: #111;
+}
+.final-stat-box-rem {
+  width: 12rem;
+  background: #333;
+  margin-left: 12px;
+}
+.final-gallery {
+  margin-bottom: 28px;
+  font-size: 0;
+}
+.final-gallery-card {
+  display: inline-block;
+  width: 30vw;
+  max-width: calc(33.333% - 14px);
+  min-width: 180px;
+  background: #ebebeb;
+  border-radius: 18px;
+  padding: 12px;
+  vertical-align: top;
+  font-size: 16px;
+}
+.final-gallery-card + .final-gallery-card {
+  margin-left: 20px;
+}
+.final-gallery-image {
+  height: 18vh;
+  min-height: 120px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.final-gallery-card:nth-child(1) .final-gallery-image {
+  background: #d8d8d8;
+}
+.final-gallery-card:nth-child(2) .final-gallery-image {
+  background: #cfcfcf;
+}
+.final-gallery-card:nth-child(3) .final-gallery-image {
+  background: #c4c4c4;
+}
+.final-gallery-label {
+  margin: 12px 0 0;
+  color: #444;
+}
+.final-cta {
+  background: #111;
+  color: #fff;
+  border-radius: 22px;
+  padding: 24px;
+}
+.final-cta-title {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+}
+.final-cta-text {
+  margin: 0 0 18px;
+  color: #d8d8d8;
+  max-width: 40em;
+}
+.final-cta-actions {
+  font-size: 0;
+}
+.final-action-primary,
+.final-action-secondary {
+  display: inline-block;
+  text-align: center;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 16px;
+}
+.final-action-primary {
+  background: #fff;
+  color: #111;
+  width: 160px;
+}
+.final-action-secondary {
+  background: #444;
+  color: #fff;
+  width: 12rem;
+  margin-left: 12px;
+}
+
+@media (max-width: 760px) {
+  .final-feature-card,
+  .final-gallery-card {
+    display: block;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .final-feature-card + .final-feature-card,
+  .final-gallery-card + .final-gallery-card,
+  .final-action-secondary {
+    margin-left: 0;
+    margin-top: 12px;
+  }
+
+  .final-stat-box-rem {
+    margin-left: 0;
+    margin-top: 12px;
+  }
+
+  .final-action-primary,
+  .final-action-secondary,
+  .final-stat-box-px,
+  .final-stat-box-rem {
+    display: block;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<section class="section">
+<h2>1. Box Model Challenge</h2>
+<p>Recreate the colorful box below using HTML and CSS so that margin, padding, border and content layers match visually.</p>
+
+<div class="demo-grid">
+<div class="card">
+<div class="box-margin">
+<div class="box-padding">
+<div class="box-border">
+<div class="box-content">CONTENT</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2>2. Margin Challenge</h2>
+<p>Recreate the layout below using only margin for spacing and positioning.</p>
+
+<div class="demo-grid">
+<div class="card">
+<div class="margin-stage">
+<div class="margin-box margin-a">Box A</div>
+<div class="margin-box margin-b">Box B</div>
+<div class="margin-box margin-c">Box C</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2>3. CSS Units Challenge</h2>
+<p>Recreate the layout using px, rem, em, %, vw and vh.</p>
+
+<div class="demo-grid">
+<div class="card">
+<div class="units-stage">
+
+<div class="unit unit-px">120px card</div>
+
+<div class="unit unit-rem">14rem card</div>
+
+<div class="unit-em-wrapper">
+<div class="unit-em">10em card</div>
+</div>
+
+<div class="unit-percent-wrapper">
+<div class="unit unit-percent">70% of parent</div>
+</div>
+
+<div class="unit unit-vw">30vw panel</div>
+
+<div class="unit-vh">18vh area</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2>4. Display Property Challenge</h2>
+<p>Recreate the three layouts using the same HTML but different display values.</p>
+
+<div class="demo-grid">
+
+<div class="card">
+<h3>Inline</h3>
+<div class="display-stage inline">
+<span class="tag">HTML</span>
+<span class="tag">CSS</span>
+<span class="tag">JavaScript</span>
+<span class="tag">Accessibility</span>
+</div>
+</div>
+
+<div class="card">
+<h3>Block</h3>
+<div class="display-stage block">
+<span class="tag">HTML</span>
+<span class="tag">CSS</span>
+<span class="tag">JavaScript</span>
+</div>
+</div>
+
+<div class="card">
+<h3>Inline‑Block</h3>
+<div class="display-stage inlineblock">
+<span class="tag">HTML</span>
+<span class="tag">CSS</span>
+<span class="tag">JavaScript</span>
+<span class="tag">React</span>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+  <h2>5. Final Challenge Screen</h2>
+  <p>
+    Recreate this landing page section. It should feel like a real website screen while still using the ideas from this lesson:
+    box model, margins, CSS units, and display behavior.
+  </p>
+
+  <div class="final-screen">
+    <div class="final-panel">
+      <div class="final-nav">
+        <span class="final-logo">StudySpace</span>
+        <span class="final-nav-link">Courses</span>
+        <span class="final-nav-link">Projects</span>
+        <span class="final-nav-link">About</span>
+      </div>
+
+      <div class="final-hero">
+        <div class="final-kicker">Frontend Practice</div>
+        <div class="final-hero-box">
+          <div class="final-hero-inner">
+            <div class="final-hero-content">
+              <h3>Build better layouts with CSS</h3>
+              <p>
+                Practice spacing, sizing, and display rules by recreating polished interface blocks that feel like real UI.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="final-features">
+        <div class="final-feature-card">
+          <h4 class="final-feature-title">Mini lessons</h4>
+          <p class="final-feature-text">
+            Small visual tasks help students understand padding, margins, and structure through repetition.
+          </p>
+          <span class="final-feature-chip">HTML</span>
+          <span class="final-feature-chip">CSS</span>
+        </div>
+        <div class="final-feature-card">
+          <h4 class="final-feature-title">Responsive tasks</h4>
+          <p class="final-feature-text">
+            Components react differently when sized with px, rem, percentages, and viewport units.
+          </p>
+          <span class="final-feature-chip">rem</span>
+          <span class="final-feature-chip">vw</span>
+          <span class="final-feature-chip">vh</span>
+        </div>
+      </div>
+
+      <div class="final-stats">
+        <div class="final-stat-bar">70% progress block</div>
+        <div class="final-stat-row">
+          <div class="final-stat-box final-stat-box-px">160px card</div>
+          <div class="final-stat-box final-stat-box-rem">12rem card</div>
+        </div>
+      </div>
+
+      <div class="final-gallery">
+        <div class="final-gallery-card">
+          <div class="final-gallery-image">18vh</div>
+          <p class="final-gallery-label">Viewport-based preview</p>
+        </div>
+        <div class="final-gallery-card">
+          <div class="final-gallery-image">Card</div>
+          <p class="final-gallery-label">Inline-block layout item</p>
+        </div>
+        <div class="final-gallery-card">
+          <div class="final-gallery-image">Card</div>
+          <p class="final-gallery-label">Another layout item</p>
+        </div>
+      </div>
+
+      <div class="final-cta">
+        <h4 class="final-cta-title">Start the challenge</h4>
+        <p class="final-cta-text">
+          Try to rebuild this screen as closely as possible without copying the exact code structure.
+        </p>
+        <div class="final-cta-actions">
+          <span class="final-action-primary">Get Started</span>
+          <span class="final-action-secondary">View Lessons</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+</body>
+</html>
